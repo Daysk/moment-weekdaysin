@@ -5,7 +5,13 @@
 //! github.com/kodie/moment-weekdaysin
 
 (function() {
-  var moment = (typeof require !== 'undefined' && require !== null) && !require.amd ? require('moment') : this.moment;
+  var moment;
+  
+  if (typeof require === "function") {
+    moment = require('moment');
+  } else {
+    moment = this.moment;
+  }
 
   var days = function(start, end, weekdays, index) {
     var days = [], d = moment(start).startOf('day');
